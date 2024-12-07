@@ -1,0 +1,20 @@
+name: 🤷バグ
+description: バグ票
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    attributes:
+      label: 事象
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 原因
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 対処
+    validations:
+      required: true
