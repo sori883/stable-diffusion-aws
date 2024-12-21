@@ -10,7 +10,7 @@
     "attributePosition": "auto"
   },
   "files": {
-    "ignore": ["node_modules/*", "cdk.out/*", "*.js", ".github/*"]
+    "ignore": ["node_modules/*", "cdk.out/*", "*.js", ".github/*","*.sh"]
   },
 
   "organizeImports": { "enabled": true },

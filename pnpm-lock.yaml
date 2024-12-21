@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@aws-cdk/aws-lambda-python-alpha':
+        specifier: 2.172.0-alpha.0
+        version: 2.172.0-alpha.0(aws-cdk-lib@2.172.0(constructs@10.4.2))(constructs@10.4.2)
       aws-cdk-lib:
         specifier: 2.172.0
         version: 2.172.0(constructs@10.4.2)
@@ -30,6 +33,9 @@ importers:
       aws-cdk:
         specifier: 2.172.0
         version: 2.172.0
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@22.10.1)(ts-node@10.9.2(@types/node@22.10.1)(typescript@5.7.2))
@@ -60,6 +66,13 @@ packages:
 
   '@aws-cdk/asset-node-proxy-agent-v6@2.1.0':
     resolution: {integrity: sha512-7bY3J8GCVxLupn/kNmpPc5VJz8grx+4RKfnnJiO1LG+uxkZfANZG3RMHhE+qQxxwkyQ9/MfPtTpf748UhR425A==}
+
+  '@aws-cdk/aws-lambda-python-alpha@2.172.0-alpha.0':
+    resolution: {integrity: sha512-oPc+HvxkGJcjHrvjoaO8aNYaGIJ0lSN87Hq70DmtDIdE1sI5uQw3+Xxldvm75AY8olYOii1kCyNeal2mMXtpmw==}
+    engines: {node: '>= 14.15.0'}
+    peerDependencies:
+      aws-cdk-lib: ^2.172.0
+      constructs: ^10.0.0
 
   '@aws-cdk/cloud-assembly-schema@38.0.1':
     resolution: {integrity: sha512-KvPe+NMWAulfNVwY7jenFhzhuLhLqJ/OPy5jx7wUstbjnYnjRVLpUHPU3yCjXFE0J8cuJVdx95BJ4rOs66Pi9w==}
@@ -677,6 +690,10 @@ packages:
   diff@4.0.2:
     resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==}
     engines: {node: '>=0.3.1'}
+
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
+    engines: {node: '>=12'}
 
   ejs@3.1.10:
     resolution: {integrity: sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==}
@@ -1416,6 +1433,11 @@ snapshots:
 
   '@aws-cdk/asset-node-proxy-agent-v6@2.1.0': {}
 
+  '@aws-cdk/aws-lambda-python-alpha@2.172.0-alpha.0(aws-cdk-lib@2.172.0(constructs@10.4.2))(constructs@10.4.2)':
+    dependencies:
+      aws-cdk-lib: 2.172.0(constructs@10.4.2)
+      constructs: 10.4.2
+
   '@aws-cdk/cloud-assembly-schema@38.0.1': {}
 
   '@babel/code-frame@7.24.7':
@@ -2145,6 +2167,8 @@ snapshots:
   diff-sequences@29.6.3: {}
 
   diff@4.0.2: {}
+
+  dotenv@16.4.7: {}
 
   ejs@3.1.10:
     dependencies:
