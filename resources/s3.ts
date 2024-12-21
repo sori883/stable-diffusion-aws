@@ -13,10 +13,7 @@ export class S3Bucket {
         ignorePublicAcls: true,
         restrictPublicBuckets: true,
       },
-      tags: [
-        ...baseTags,
-        {key: "Name", value: generateResourceName("s3bucket")}
-      ]
-    })
+      tags: [...baseTags, { key: "Name", value: generateResourceName("s3bucket") }],
+    });
   }
 }

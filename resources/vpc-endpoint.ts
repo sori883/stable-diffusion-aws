@@ -16,7 +16,7 @@ export class VpcEndpoint {
       serviceName: ec2.GatewayVpcEndpointAwsService.S3.name,
       vpcId: props.vpc.attrVpcId,
       vpcEndpointType: ec2.VpcEndpointType.GATEWAY,
-      routeTableIds: [props.routeTable.attrRouteTableId]
+      routeTableIds: [props.routeTable.attrRouteTableId],
     });
   }
 }

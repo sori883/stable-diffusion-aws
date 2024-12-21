@@ -8,7 +8,7 @@ import { generateResourceName } from "~/util";
 import * as lambdaPython from "@aws-cdk/aws-lambda-python-alpha";
 import * as apiGw from "aws-cdk-lib/aws-apigatewayv2";
 import { HttpLambdaIntegration } from "aws-cdk-lib/aws-apigatewayv2-integrations";
-import { nodeEnv } from"~/env";
+import { nodeEnv } from "~/env";
 
 interface SubStackProps extends StackProps {
   lambdaRole: iam.CfnRole;
@@ -17,7 +17,6 @@ interface SubStackProps extends StackProps {
 
 export class Lambda {
   constructor(scope: Construct, props: SubStackProps) {
-
     const discord = new lambdaPython.PythonFunction(scope, "discordLambda", {
       entry: "lambda/discord",
       runtime: lambda.Runtime.PYTHON_3_9,
@@ -30,7 +29,7 @@ export class Lambda {
         APPLICATION_ID: nodeEnv.APPLICATION_ID,
         APPLICATION_PUBLIC_KEY: nodeEnv.APPLICATION_PUBLIC_KEY!,
         COMMAND_GUILD_ID: nodeEnv.COMMAND_GUILD_ID!,
-        INSTANCE_ID: props.sbEc2.attrInstanceId
+        INSTANCE_ID: props.sbEc2.attrInstanceId,
       },
       role: iam.Role.fromRoleArn(scope, props.lambdaRole.roleName!, props.lambdaRole.attrArn),
     });
@@ -49,6 +48,5 @@ export class Lambda {
       methods: [apiGw.HttpMethod.POST],
       integration: lambdaIntegration,
     });
-
   }
 }

@@ -19,10 +19,7 @@ export class SecurityGroup {
       vpcId: props.vpc.attrVpcId,
       groupDescription: "EC2 SecurityGroup",
       groupName: generateResourceName("ec2SecurityGroup"),
-      tags: [
-        ...baseTags,
-        {key: "Name", value: generateResourceName("ec2SecurityGroup")}
-      ]
+      tags: [...baseTags, { key: "Name", value: generateResourceName("ec2SecurityGroup") }],
     });
 
     /**
@@ -33,7 +30,7 @@ export class SecurityGroup {
       ipProtocol: "tcp",
       destinationPrefixListId: ec2.Peer.prefixList(awsEnv.managedPrefixList.s3).uniqueId,
       fromPort: 443,
-      toPort: 443
+      toPort: 443,
     });
 
     /**
@@ -44,7 +41,7 @@ export class SecurityGroup {
       ipProtocol: "tcp",
       cidrIp: "0.0.0.0/0",
       fromPort: 0,
-      toPort: 65535
+      toPort: 65535,
     });
 
     /**
@@ -55,7 +52,7 @@ export class SecurityGroup {
       ipProtocol: "tcp",
       cidrIp: "0.0.0.0/0",
       fromPort: 7860,
-      toPort: 7860
+      toPort: 7860,
     });
 
     /**
@@ -66,8 +63,7 @@ export class SecurityGroup {
       ipProtocol: "tcp",
       cidrIp: "0.0.0.0/0",
       fromPort: 22,
-      toPort: 22
+      toPort: 22,
     });
-
-  };
-};
+  }
+}

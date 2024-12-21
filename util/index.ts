@@ -1,1 +1,1 @@
-export * from  "~/util/generateResourceName";
+export * from "~/util/generateResourceName";

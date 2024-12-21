@@ -18,20 +18,14 @@ export class Vpc {
       cidrBlock: env.vpc.cidrBlock,
       enableDnsHostnames: true,
       enableDnsSupport: true,
-      tags: [
-        ...baseTags,
-        {key: "Name", value: generateResourceName("stdVPC")}
-      ]
+      tags: [...baseTags, { key: "Name", value: generateResourceName("stdVPC") }],
     });
 
     /**
      * IGW
      */
     this.igw = new ec2.CfnInternetGateway(scope, "stdIGW", {
-      tags: [
-        ...baseTags,
-        {key: "Name", value: generateResourceName("stdIGW")}
-      ]
+      tags: [...baseTags, { key: "Name", value: generateResourceName("stdIGW") }],
     });
 
     /**
@@ -39,7 +33,7 @@ export class Vpc {
      */
     new ec2.CfnVPCGatewayAttachment(scope, "VpcGatewayAttachment", {
       vpcId: this.vpc.ref,
-      internetGatewayId: this.igw.ref
+      internetGatewayId: this.igw.ref,
     });
 
     /**
@@ -47,10 +41,7 @@ export class Vpc {
      */
     this.routeTable = new ec2.CfnRouteTable(scope, "stdRouteTable", {
       vpcId: this.vpc.attrVpcId,
-      tags: [
-        ...baseTags,
-        {key: "Name", value: generateResourceName("stdRouteTable")}
-      ]
+      tags: [...baseTags, { key: "Name", value: generateResourceName("stdRouteTable") }],
     });
 
     /**
@@ -59,7 +50,7 @@ export class Vpc {
     new ec2.CfnRoute(scope, "addIGWRoute", {
       routeTableId: this.routeTable.attrRouteTableId,
       gatewayId: this.igw.attrInternetGatewayId,
-      destinationCidrBlock: "0.0.0.0/0"
+      destinationCidrBlock: "0.0.0.0/0",
     });
 
     /**
@@ -69,10 +60,7 @@ export class Vpc {
       vpcId: this.vpc.attrVpcId,
       availabilityZone: env.azs["a"],
       cidrBlock: env.vpc.subnet.ec2,
-      tags: [
-        ...baseTags,
-        {key: "Name", value: generateResourceName("ec2Subnet", env.azs["a"])}
-      ]
+      tags: [...baseTags, { key: "Name", value: generateResourceName("ec2Subnet", env.azs["a"]) }],
     });
 
     /**
@@ -82,7 +70,5 @@ export class Vpc {
       routeTableId: this.routeTable.attrRouteTableId,
       subnetId: this.ec2Subnet.attrSubnetId,
     });
-
-
   }
 }

@@ -14,28 +14,20 @@ export class Role {
       roleName: generateResourceName("ec2Role"),
       managedPolicyArns: [
         iam.ManagedPolicy.fromAwsManagedPolicyName(awsEnv.ManagedPolicy.AmazonSSMManagedInstanceCore).managedPolicyArn,
-        iam.ManagedPolicy.fromAwsManagedPolicyName(awsEnv.ManagedPolicy.AmazonS3FullAccess).managedPolicyArn
+        iam.ManagedPolicy.fromAwsManagedPolicyName(awsEnv.ManagedPolicy.AmazonS3FullAccess).managedPolicyArn,
       ],
-      tags: [
-        ...baseTags,
-        {key: "Name", value: generateResourceName("ec2Role")}
-      ]
+      tags: [...baseTags, { key: "Name", value: generateResourceName("ec2Role") }],
     });
 
-
-  this.lambdaEc2Role = new iam.CfnRole(scope, "LambdaEC2Role", {
-    assumeRolePolicyDocument: lambdaTrustPolicy,
-    roleName: generateResourceName("lambdaEc2Role"),
-    managedPolicyArns: [
-      iam.ManagedPolicy.fromAwsManagedPolicyName(awsEnv.ManagedPolicy.AWSLambdaBasicExecutionRole).managedPolicyArn,
-      iam.ManagedPolicy.fromAwsManagedPolicyName(awsEnv.ManagedPolicy.AmazonEC2FullAccess).managedPolicyArn,
-      iam.ManagedPolicy.fromAwsManagedPolicyName(awsEnv.ManagedPolicy.AWSLambdaRole).managedPolicyArn,
-    ],
-    tags: [
-      ...baseTags,
-      {key: "Name", value: generateResourceName("lambdaEc2Role")}
-    ]
-  });
-
+    this.lambdaEc2Role = new iam.CfnRole(scope, "LambdaEC2Role", {
+      assumeRolePolicyDocument: lambdaTrustPolicy,
+      roleName: generateResourceName("lambdaEc2Role"),
+      managedPolicyArns: [
+        iam.ManagedPolicy.fromAwsManagedPolicyName(awsEnv.ManagedPolicy.AWSLambdaBasicExecutionRole).managedPolicyArn,
+        iam.ManagedPolicy.fromAwsManagedPolicyName(awsEnv.ManagedPolicy.AmazonEC2FullAccess).managedPolicyArn,
+        iam.ManagedPolicy.fromAwsManagedPolicyName(awsEnv.ManagedPolicy.AWSLambdaRole).managedPolicyArn,
+      ],
+      tags: [...baseTags, { key: "Name", value: generateResourceName("lambdaEc2Role") }],
+    });
   }
 }

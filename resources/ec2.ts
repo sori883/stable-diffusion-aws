@@ -8,7 +8,7 @@ import { env, baseTags } from "~/env";
 import { installSb } from "~/userData/install_sb";
 
 interface SubStackProps extends StackProps {
-  ec2Subnet: ec2.CfnSubnet
+  ec2Subnet: ec2.CfnSubnet;
   ec2SecurityGroup: ec2.CfnSecurityGroup;
   ec2Role: iam.CfnRole;
 }
@@ -21,11 +21,9 @@ export class Ec2 {
      * Instance Profile
      */
     const instanceProfile = new iam.CfnInstanceProfile(scope, "myInstanceProfile", {
-      roles: [
-        props.ec2Role.roleName!,
-      ],
+      roles: [props.ec2Role.roleName!],
     });
-    instanceProfile.addDependency(props.ec2Role)
+    instanceProfile.addDependency(props.ec2Role);
 
     const SBInstanceKey = new ec2.CfnKeyPair(scope, "SBInstanceKey", {
       keyName: generateResourceName("SBInstanceKey"),
@@ -52,17 +50,14 @@ export class Ec2 {
       ],
       networkInterfaces: [
         {
-            deviceIndex: "0",
-            associatePublicIpAddress: true,
-            deleteOnTermination: true,
-            subnetId: props.ec2Subnet.attrSubnetId,
-            groupSet: [props.ec2SecurityGroup.attrGroupId],
+          deviceIndex: "0",
+          associatePublicIpAddress: true,
+          deleteOnTermination: true,
+          subnetId: props.ec2Subnet.attrSubnetId,
+          groupSet: [props.ec2SecurityGroup.attrGroupId],
         },
       ],
-      tags: [
-        ...baseTags,
-        {key: "Name", value: generateResourceName("SBInstance")}
-      ]
+      tags: [...baseTags, { key: "Name", value: generateResourceName("SBInstance") }],
     });
   }
 }
