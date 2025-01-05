@@ -4,10 +4,6 @@ import * as ec2 from "aws-cdk-lib/aws-ec2";
 require("dotenv").config();
 
 export const nodeEnv = {
-  APPLICATION_ID: process.env.APPLICATION_ID!,
-  DISCORD_TOKEN: process.env.DISCORD_TOKEN!,
-  APPLICATION_PUBLIC_KEY: process.env.APPLICATION_PUBLIC_KEY!,
-  COMMAND_GUILD_ID: process.env.COMMAND_GUILD_ID!,
   SB_USERNAME: process.env.SB_USERNAME!,
   SB_PASSWORD: process.env.SB_PASSWORD!,
 };
@@ -83,8 +79,6 @@ export const awsEnv = {
   ManagedPolicy: {
     AmazonSSMManagedInstanceCore: "AmazonSSMManagedInstanceCore",
     AmazonS3FullAccess: "AmazonS3FullAccess",
-    AWSLambdaBasicExecutionRole: "service-role/AWSLambdaBasicExecutionRole",
     AmazonEC2FullAccess: "AmazonEC2FullAccess",
-    AWSLambdaRole: "service-role/AWSLambdaRole",
   },
 };

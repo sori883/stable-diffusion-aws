@@ -5,7 +5,6 @@ import { VpcEndpoint } from "~/resources/vpc-endpoint";
 import { SecurityGroup } from "~/resources/security-group";
 import { Role } from "~/resources/role";
 import { Ec2 } from "~/resources/ec2";
-import { Lambda } from "~/resources/lambda";
 import { S3Bucket } from "~/resources/s3";
 
 export class MainStack extends Stack {
@@ -29,11 +28,6 @@ export class MainStack extends Stack {
       ec2Subnet: vpc.ec2Subnet,
       ec2SecurityGroup: sg.ec2SecurityGroup,
       ec2Role: role.ec2Role,
-    });
-
-    new Lambda(this, {
-      lambdaRole: role.lambdaEc2Role,
-      sbEc2: ec2.ec2,
     });
 
     new S3Bucket(this);

@@ -1,4 +1,4 @@
-import { env, awsEnv } from "env";
+import { env, awsEnv } from "~/env";
 
 export function generateResourceName(name: string, az?: string): string {
   if (!awsEnv.regions.includes(env.region)) {
